@@ -2,6 +2,11 @@
 node_modules/
 dist/
 build/
+.next/
+out/
+.turbo/
+coverage/
 .env
 .env.*
 *.log
+*.tsbuildinfo
