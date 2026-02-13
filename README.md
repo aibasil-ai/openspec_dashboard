@@ -2,7 +2,7 @@
 
 這個專案是一個以 `Next.js + TypeScript` 建置的 OpenSpec 進度儀表板，重點是把 OpenSpec 專案中的 `changes`、`specs`、`config.yaml` 轉成可視化、可操作的管理介面，方便你快速掌握專案現況。
 
-目前程式主體位於 `web/`，OpenSpec 資料與規格樣本位於 `openspec/`。
+目前程式主體位於專案根目錄，OpenSpec 資料與規格樣本位於 `examples/openspec/`（並保留 `openspec -> examples/openspec` 相容連結）。
 
 ---
 
@@ -164,19 +164,20 @@ openspec/
 ```text
 .
 ├─ README.md
-├─ openspec/
-│  ├─ config.yaml
-│  ├─ changes/
-│  └─ specs/
-└─ web/
-   ├─ app/
-   ├─ components/
-   ├─ lib/
-   ├─ public/
-   └─ package.json
+├─ app/
+├─ components/
+├─ lib/
+├─ openspec -> examples/openspec
+├─ public/
+├─ package.json
+└─ examples/
+   └─ openspec/
+      ├─ config.yaml
+      ├─ changes/
+      └─ specs/
 ```
 
-`web/lib/` 主要職責：
+`lib/` 主要職責：
 
 - `fs-access.ts`：開啟/匯入/重載/刪除/寫檔
 - `openspec-parser.ts`：OpenSpec 檔案解析與統計
@@ -197,7 +198,6 @@ openspec/
 ## 8. 快速開始
 
 ```bash
-cd web
 npm install
 npm run dev
 ```
@@ -208,7 +208,7 @@ npm run dev
 
 ## 9. 常用指令
 
-在 `web/` 目錄下執行：
+在專案根目錄下執行：
 
 ```bash
 # 開發模式
@@ -237,7 +237,7 @@ npm run test:ui
 
 ## 10. 測試覆蓋重點
 
-目前測試涵蓋（位於 `web/app/__tests__` 與 `web/lib/__tests__`）：
+目前測試涵蓋（位於 `app/__tests__` 與 `lib/__tests__`）：
 
 - 解析器：統計是否正確（tasks/specs summary）
 - 設定驗證：YAML 與 schema 驗證
@@ -307,7 +307,6 @@ npm run test:ui
 ### 0:00 - 1:30 先把專案跑起來
 
 ```bash
-cd web
 npm install
 npm run dev
 ```
@@ -330,7 +329,7 @@ npm run dev
 
 ### 3:30 - 4:30 做一次基本驗證
 
-在另一個終端機（`web/` 目錄）跑：
+在另一個終端機（專案根目錄）跑：
 
 ```bash
 npm run lint
@@ -341,6 +340,6 @@ npm run test
 
 ### 4:30 - 5:00 新同事第一天建議
 
-1. 先不要改大型流程，先從 `web/lib/openspec-parser.ts` 與 `web/lib/fs-access.ts` 讀起。
+1. 先不要改大型流程，先從 `lib/openspec-parser.ts` 與 `lib/fs-access.ts` 讀起。
 2. 修改前先確認目前是 `Full Read/Write` 還是 `Fallback Read-only`。
 3. 若要刪除 change，先檢查 `backupRetentionDays`，避免備份太快被清掉。

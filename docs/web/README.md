@@ -201,7 +201,6 @@
 ## 9. 快速啟動
 
 ```bash
-cd web
 npm install
 npm run dev
 ```
@@ -291,4 +290,3 @@ npm run test:ui
 - 自訂卡片排序與篩選
 - 匯出報表（CSV/JSON）
 - 與外部系統整合（如 issue tracker）
-
