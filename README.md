@@ -298,4 +298,49 @@ npm run test:ui
 - 自訂儀表板卡片與篩選器
 - 匯出報表（CSV/JSON）
 
-如果你要，我也可以下一步幫你補一份「給新同事的 5 分鐘上手指南」放在同一份 README 內。
+---
+
+## 15. 給新同事的 5 分鐘上手指南
+
+目標：5 分鐘內把專案跑起來、看懂主要頁面、確認本機開發環境正常。
+
+### 0:00 - 1:30 先把專案跑起來
+
+```bash
+cd web
+npm install
+npm run dev
+```
+
+打開 `http://localhost:3000`，看到 Dashboard 首頁就完成第一步。
+
+### 1:30 - 2:30 開啟 OpenSpec 專案資料
+
+1. 先用 Chrome 或 Edge（可寫模式）。
+2. 點「開啟本機專案」。
+3. 選擇專案根目錄（包含 `openspec/` 的那層）。
+
+如果你只是在 Safari/Firefox 測試，會進入唯讀模式，屬於正常行為。
+
+### 2:30 - 3:30 先看三個關鍵分頁
+
+1. `Overview`：確認統計卡片、`staleDays`、`backupRetentionDays`。
+2. `In Progress`：確認進行中 change 與 `tasks` 完成度。
+3. `Archived`：確認封存內容與 `specs` 變更摘要。
+
+### 3:30 - 4:30 做一次基本驗證
+
+在另一個終端機（`web/` 目錄）跑：
+
+```bash
+npm run lint
+npm run test
+```
+
+兩者都通過，表示核心開發流程可用。
+
+### 4:30 - 5:00 新同事第一天建議
+
+1. 先不要改大型流程，先從 `web/lib/openspec-parser.ts` 與 `web/lib/fs-access.ts` 讀起。
+2. 修改前先確認目前是 `Full Read/Write` 還是 `Fallback Read-only`。
+3. 若要刪除 change，先檢查 `backupRetentionDays`，避免備份太快被清掉。
